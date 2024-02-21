@@ -1,0 +1,215 @@
+<!-- templates/FormularioHUT.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link type='text/css' href='{% static "css/estilos.css" %}' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Formulario de Inscripción</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <img src="{% static 'img/fronterasLogoSinFondoRecortado2.png' %}" alt="Logo" class="logo1-img">
+            </div>
+            <div class="col-md-6 text-right">
+                <img src="{% static 'img/LogoHUT.png' %}" alt="Logo" class="logo-img">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="d-inline align-middle ml-2 mb-0 tituloForm">Formulario de Inscripción</h2>
+            </div>
+        </div>
+        {% csrf_token %}
+        <div class="mb-2">
+            <label for="{{ form.nombre.id_for_label }}" class="form-label">{{ formulario.nombre.label }}:</label>
+            <div class="col-sm-6">
+                {{ formulario.nombre }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="{{ form.edad.id_for_label }}" class="form-label">{{ formulario.edad.label }}:</label>
+            <div class="col-sm-3">
+                {{ formulario.edad }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="{{ form.estadoCivil.id_for_label }}" class="form-label">{{ formulario.estadoCivil.label }}:</label>
+            <div class="col-sm-3">
+                {{ formulario.estadoCivil }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label class="form-label"> Telefono </label>
+        </div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="{{ form.codigo_pais.id_for_label }}" class="form-label custom-label">{{ formulario.codigo_pais.label }}:</label>
+            {{ formulario.codigo_pais }}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="{{ form.codigo_area.id_for_label }}" class="form-label custom-label">{{ formulario.codigo_area.label }}:</label>
+            {{ formulario.codigo_area }}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="{{ form.numero_telefono.id_for_label }}" class="form-label custom-label">{{ formulario.numero_telefono.label }}:</label>
+            {{ formulario.numero_telefono }}
+        </div>
+    </div>
+      <!-- Mostrar mensajes de error -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'telefono' in message.tags %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+</div>
+
+
+
+
+        <div class="mb-3" style="display: none;">
+            <label for="{{ form.telefono.id_for_label }}" class="form-label">{{ formulario.telefono.label }}:</label>
+            <div class="col-sm-4">
+                {{ formulario.telefono }}
+<!--                &lt;!&ndash; Mostrar mensajes de error &ndash;&gt;-->
+<!--                {% if messages %}-->
+<!--                    {% for message in messages %}-->
+<!--                        {% if 'telefono' in message.tags %}-->
+<!--                            <div class="alert alert-danger" role="alert">-->
+<!--                                {{ message }}-->
+<!--                            </div>-->
+<!--                        {% endif %}-->
+<!--                    {% endfor %}-->
+<!--                {% endif %}-->
+            </div>
+        </div>
+    <div class="mb-3">
+        <label for="{{ form.email.id_for_label }}" class="form-label">{{ formulario.email.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.email }}
+            <!-- Mostrar mensajes de error -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'email' in message.tags %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.pais.id_for_label }}" class="form-label">{{ formulario.pais.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.pais }}
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.provincia.id_for_label }}" class="form-label">{{ formulario.provincia.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.provincia }}
+        </div>
+    </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.ciudad.id_for_label }}" class="form-label">{{ formulario.ciudad.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.ciudad }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.pastor.id_for_label }}" class="form-label">{{ formulario.pastor.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.pastor }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.congregacion.id_for_label }}" class="form-label">{{ formulario.congregacion.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.congregacion }}
+        </div>
+    </div>
+        <div class="col-12 help-text">
+            {{ formulario.non_field_errors }}
+            {{ formulario.non_field_errors }}
+            {% for field in formulario %}
+                {{ field.errors }}
+            {% endfor %}
+        </div>
+<input name="" id="" class="btn btn-success ml-auto" type="submit" value="Guardar">
+
+    </form>
+
+
+<script src="{% static 'js/concatenarTelefono.js' %}"></script>
+<script>
+$(document).ready(function() {
+    // Inhabilitar el campo de provincia al cargar la página
+    $("#id_provincia").prop("disabled", true);
+
+    // Obtener las opciones originales del campo de provincia
+    var opcionesOriginales = $("#id_provincia").html();
+
+    // Manejar el evento de cambio en el campo de país
+    $("#id_pais").change(function() {
+        var selectedPais = $(this).val();
+
+        // Restaurar las opciones originales del campo de provincia
+        $("#id_provincia").html(opcionesOriginales);
+
+        // Deshabilitar el campo de provincia
+        $("#id_provincia").prop("disabled", true);
+
+        // Si se selecciona un país, habilitar el campo de provincia y actualizar las opciones
+        if (selectedPais) {
+            // Hacer una petición AJAX para obtener las provincias relacionadas con el país seleccionado
+            $.ajax({
+                url: "{% url 'obtener_provincias' %}",  // Reemplaza con la URL de tu vista para obtener provincias
+                data: { pais_id: selectedPais },
+                success: function(data) {
+                    // Borrar las opciones existentes antes de agregar las nuevas opciones
+                    $("#id_provincia").empty();
+
+                    // Agregar una opción en blanco al principio
+                    $("#id_provincia").append('<option value="">---------</option>');
+
+                    // Agregar las nuevas opciones al campo de provincia
+                    for (var i = 0; i < data.length; i++) {
+                        $("#id_provincia").append('<option value="' + data[i].id + '">' + data[i].nombre + '</option>');
+                    }
+
+                    // Habilitar el campo de provincia después de actualizar las opciones
+                    $("#id_provincia").prop("disabled", false);
+                },
+                error: function() {
+                    console.log("Error al obtener provincias");
+                }
+            });
+        } else {
+            // Si no se selecciona un país, dejar el campo de provincia en blanco y deshabilitado
+            $("#id_provincia").val("");
+        }
+    });
+});
+</script>
+
+</body>
+</html>

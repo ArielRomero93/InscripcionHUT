@@ -1,0 +1,25 @@
+<!-- templates/exito.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link type='text/css' href='{% static "css/estilos.css" %}' rel='stylesheet'>
+    <title>Mensaje de Éxito</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="alert alert-success text-center contenedorPrincipal">
+            <h2 class="mb-4 tituloExito">¡Inscripción Exitosa!</h2>
+            <p class="parrafoExito">{{ nombre }}, gracias por registrarte.</p>
+            <br>
+            <p class="parrafoExito">Recordá que la duración de la cursada será de 6 Meses</p>
+            <br>
+            <p class="parrafoExito">¡Para que perceberes y No Abandones!</p>
+        </div>
+    </div>
+</body>
+</html>
