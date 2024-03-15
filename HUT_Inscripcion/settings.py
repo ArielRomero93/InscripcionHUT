@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g0hg%e*^!yk)sow_ztxd9r(_p576+hvp6s!@pjnqwq+ms9ums%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['systemhut.pythonanywhere.com']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
     'AppFormularioInscripcion',
 ]
 
@@ -50,7 +51,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'HUT_Inscripcion.urls'
 
 TEMPLATES = [
     {
@@ -74,10 +74,21 @@ WSGI_APPLICATION = 'HUT_Inscripcion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'systemHut$mysqlhutdb',
+        'USER': 'systemHut',
+        'PASSWORD': 'SQL_Ariel_2024',
+        'HOST': 'systemHut.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 
@@ -115,8 +126,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+ROOT_URLCONF = 'AppFormularioInscripcion.urls'
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/systemHut/InscripcionHUT/static'
+#STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'AppFormularioInscripcion/static')]
 
 # Default primary key field type

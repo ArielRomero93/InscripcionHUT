@@ -1,7 +1,13 @@
 from django.contrib import admin
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 from AppFormularioInscripcion.models import Pais, ProvinciaEstado,FormularioInscripcionHUT
 
 # Register your models here.
+
+class AdminResource(resources.ModelResource):
+    class Meta:
+        model = FormularioInscripcionHUT
 
 class AdminPais(admin.ModelAdmin):
     list_display = ('paisNombre',)  # Añade la coma al final para indicar una tupla
@@ -11,8 +17,10 @@ class AdminProvinciaEstado(admin.ModelAdmin):
     list_display = ('provinciaNombre',)
     ordering = ['provinciaNombre']
 
-class AdminFormularioInscripcion(admin.ModelAdmin):
-    list_display = ('nombre',)
+class AdminFormularioInscripcion(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('nombre', 'pais')
+    # search_fields = ('nombre', 'pais')
+    resource_class = AdminResource
     ordering = ['nombre']
 
 admin.site.site_header = 'Formulario'
