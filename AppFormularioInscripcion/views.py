@@ -24,6 +24,7 @@ class FormularioInscripcionView(View):
             form = validaciones.QuitarEspacios(form)
             telefono = form.cleaned_data['telefono']
             email = form.cleaned_data['email']
+            nombre = form.cleaned_data['nombre']
 
             if validaciones.ValidarNumeroTelefono(telefono):
                 # Mostrar mensaje de error y no guardar el formulario
@@ -34,15 +35,15 @@ class FormularioInscripcionView(View):
                 messages.error(request, 'Ya existe alguien registrado con ese correo electrónico.', extra_tags='email')
                 return render(request, self.template_name, {'formulario': form})
 
-            # Obtener el nombre completo del usuario
-            nombre_completo = form.cleaned_data['nombre']
+            # # Obtener el nombre completo del usuario
+            # nombre_completo = form.cleaned_data['nombre']
 
-            # Dividir el nombre completo en nombre y apellido
-            nombre, _, apellido = nombre_completo.partition(' ')
+            # # Dividir el nombre completo en nombre y apellido
+            # nombre, _, apellido = nombre_completo.partition(' ')
 
-            # Guardar el nombre y apellido por separado
-            form.cleaned_data['nombre'] = nombre
-            form.cleaned_data['apellido'] = apellido
+            # # Guardar el nombre y apellido por separado
+            # form.cleaned_data['nombre'] = nombre
+            # form.cleaned_data['apellido'] = apellido
 
             form.save()
 
@@ -69,9 +70,10 @@ def obtener_provincias(request):
     pais_id = request.GET.get('pais_id')
 
     if pais_id:
-        provincias = ProvinciaEstado.objects.filter(idPais_id=pais_id)
+        provincias = ProvinciaEstado.objects.filter(idPais_id=pais_id).order_by('provinciaNombre')
         opciones_provincias = [{'id': provincia.id, 'nombre': provincia.provinciaNombre} for provincia in provincias]
         print(opciones_provincias)
         return JsonResponse(opciones_provincias, safe=False)
 
     return JsonResponse([], safe=False)
+

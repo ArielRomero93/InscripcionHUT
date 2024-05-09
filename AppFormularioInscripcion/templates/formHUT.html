@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link type='text/css' href='{% static "css/estilos.css" %}' rel='stylesheet'>
+    <link rel="icon" type="image/png" href="{% static 'img/LogoSOLO_Mesa de trabajo 1.png' %}">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Formulario de Inscripción</title>
@@ -32,6 +33,12 @@
             <label for="{{ form.nombre.id_for_label }}" class="form-label">{{ formulario.nombre.label }}:</label>
             <div class="col-sm-6">
                 {{ formulario.nombre }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="{{ form.apellido.id_for_label }}" class="form-label">{{ formulario.apellido.label }}:</label>
+            <div class="col-sm-6">
+                {{ formulario.apellido }}
             </div>
         </div>
         <div class="mb-2">

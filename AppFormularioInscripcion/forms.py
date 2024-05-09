@@ -2,7 +2,7 @@ from django import forms
 from .models import FormularioInscripcionHUT
 
 class InscripcionForm(forms.ModelForm):
-    codigo_pais = forms.CharField(label='Cod. país', max_length=3,
+    codigo_pais = forms.CharField(label='Cod. país (sin +)', max_length=3,
                                   widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 60px;'}))
     codigo_area = forms.CharField(label='Cod. área', max_length=5,
                                   widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 100px;'}))
@@ -14,6 +14,7 @@ class InscripcionForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'apellido': forms.TextInput(attrs={'class': 'form-control'}),
             'edad': forms.TextInput(attrs={'class': 'form-control'}),
             'estadoCivil': forms.Select(attrs={'class': 'form-control'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control'}),
@@ -25,7 +26,8 @@ class InscripcionForm(forms.ModelForm):
             'congregacion': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'nombre': 'Nombre y Apellido',
+            'nombre': 'Nombre',
+            'apellido': 'Apellido',
             'telefono': 'Teléfono (Con código de país y área ej: 54 3544 123456 )',
             'pais': 'País',
             'provincia': 'Provincia',

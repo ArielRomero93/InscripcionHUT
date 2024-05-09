@@ -9,6 +9,10 @@ class Pais(models.Model):
 
     def __str__(self):
         return self.paisNombre
+
+    class Meta:
+        ordering = ['paisNombre']
+
 class ProvinciaEstado(models.Model):
     idPais = models.ForeignKey(Pais, on_delete=models.CASCADE)
     provinciaNombre = models.CharField(max_length=100)
@@ -20,7 +24,8 @@ class FormularioInscripcionHUT(models.Model):
         ('Soltera/o', 'Soltera/o'),
         ('Casada/o', 'Casada/o'),
     )
-    nombre = models.CharField(max_length= 60)
+    nombre = models.CharField(max_length= 30)
+    apellido = models.CharField(max_length= 25)
     edad = models.IntegerField(
         validators=[
             MaxValueValidator(99),  # Ajusta el valor según tu necesidad
