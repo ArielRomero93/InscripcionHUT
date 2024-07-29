@@ -3,8 +3,8 @@ from django.contrib import messages
 from django.utils.datastructures import MultiValueDictKeyError
 from django.views import View
 from AppFormularioInscripcion import validaciones
-from .models import FormularioInscripcionHUT, ProvinciaEstado, Pais
-from .forms import InscripcionForm
+from .models import FormularioInscripcionHUT, ProvinciaEstado, Pais, FormularioDeDecision
+from .forms import InscripcionForm, DecisionForm
 from django.http import JsonResponse
 
 from django.urls import reverse
@@ -64,6 +64,48 @@ class InscripcionExitosaView(View):
         # Pasar el nombre del usuario al template
         return render(request, self.template_name, {'nombre': nombre_usuario})
 
+class InscripcionCerradaView(View):
+    template_name = 'inscripcionHutCerrada.html'
+
+    def get(self, request):
+
+        return render(request, self.template_name)
+
+
+class FormularioDecicionView(View):
+    template_name = 'formDecisionHUT.html'
+
+    def get(self, request):
+        form = DecisionForm()
+        return render(request, self.template_name, {'formulario': form})
+
+    def post(self, request):
+        form = DecisionForm(request.POST)
+
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            nombre = form.cleaned_data['nombre']
+            if validaciones.ValidarEmailDesdeFormularioDeDecision(email):
+                messages.error(request, 'Ya existe alguien que usó ese correo electrónico.', extra_tags='email')
+                return render(request, self.template_name, {'formulario': form})
+
+            form.save()
+
+            # Redirigir a la página de éxito con el nombre del usuario como parámetro
+            url = reverse('decisionProcesadaExitosamente', kwargs={'nombre': nombre})
+            return redirect(url)
+
+        return render(request, self.template_name, {'formulario': form})
+
+class decisionProcesadaExitosamenteView(View):
+    template_name = 'decisionProcesadaExitosamente.html'
+
+    def get(self, request, *args, **kwargs):
+        # Obtener el nombre del usuario del parámetro en la URL
+        nombre_usuario = kwargs.get('nombre', 'Usuario')
+
+        # Pasar el nombre del usuario al template
+        return render(request, self.template_name, {'nombre': nombre_usuario})
 
 
 def obtener_provincias(request):
@@ -77,3 +119,8 @@ def obtener_provincias(request):
 
     return JsonResponse([], safe=False)
 
+#Grillas
+
+def UsuarioDecision(request):
+    usuariosDecisiones = FormularioDeDecision.objects.order_by('nombre')
+    return render(request, 'formularioDecisionGrilla.html', {'usuarios': usuariosDecisiones})

@@ -1,4 +1,4 @@
-from AppFormularioInscripcion.models import FormularioInscripcionHUT
+from AppFormularioInscripcion.models import FormularioInscripcionHUT, FormularioDeDecision
 
 
 def ValidarNumeroTelefono(telefono):
@@ -11,6 +11,12 @@ def ValidarNumeroTelefono(telefono):
 
 def ValidarEmail(email):
     if FormularioInscripcionHUT.objects.filter(email__endswith=email).exists():
+        return True
+    else:
+        return False
+
+def ValidarEmailDesdeFormularioDeDecision(email):
+    if FormularioDeDecision.objects.filter(email__endswith=email).exists():
         return True
     else:
         return False

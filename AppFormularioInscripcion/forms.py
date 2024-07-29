@@ -1,5 +1,5 @@
 from django import forms
-from .models import FormularioInscripcionHUT
+from .models import FormularioInscripcionHUT, FormularioDeDecision
 
 class InscripcionForm(forms.ModelForm):
     codigo_pais = forms.CharField(label='Cod. país (sin +)', max_length=3,
@@ -39,3 +39,23 @@ class InscripcionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initial['telefono'] = '+xx xxxx xxxxxx'
+        
+        
+class DecisionForm(forms.ModelForm):
+    class Meta:
+        model = FormularioDeDecision
+        fields = "__all__"
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'apellido': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'profesionOcupacion': forms.TextInput(attrs={'class': 'form-control'}),
+            'servicioElegido': forms.Select(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'nombre': 'Nombre',
+            'apellido': 'Apellido',
+            'email': 'E-mail',
+            'profesionOcupacion': 'Profesion / Ocupacion',
+            'servicioElegido': 'Oportunidades de Servicio'
+        }

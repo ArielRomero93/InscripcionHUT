@@ -1,0 +1,88 @@
+<!-- templates/FormularioHUT.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link type='text/css' href='{% static "css/estilos.css" %}' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Toma tu Decision</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <img src="{% static 'img/fronterasLogoSinFondoRecortado2.png' %}" alt="Logo" class="logo1-img">
+            </div>
+            <div class="col-md-6 text-right">
+                <img src="{% static 'img/LogoHUT.png' %}" alt="Logo" class="logo-img">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="d-inline align-middle ml-2 mb-0 tituloForm">¿Cuál es tu Decisión?</h2>
+                <br>
+                <p>
+                    HUT está llegando a su fin, pero la tarea de llegar a los pueblos musulmanes continua.
+                    Como ya debes saber, el objetivo de este curso no es que tú almacenes información, sino que seas desafiado a:
+                    Anhelar ser usado por Dios, involucrarte, comprometerte y desempeñar tu papel en esta visión.
+                </p>
+            </div>
+        </div>
+        {% csrf_token %}
+        <div class="mb-2">
+            <label for="{{ form.nombre.id_for_label }}" class="form-label">{{ formulario.nombre.label }}:</label>
+            <div class="col-sm-6">
+                {{ formulario.nombre }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="{{ form.apellido.id_for_label }}" class="form-label">{{ formulario.apellido.label }}:</label>
+            <div class="col-sm-6">
+                {{ formulario.apellido }}
+            </div>
+        </div>
+    <div class="mb-3">
+        <label for="{{ form.email.id_for_label }}" class="form-label">{{ formulario.email.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.email }}
+            <!-- Mostrar mensajes de error -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'email' in message.tags %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.profesionOcupacion.id_for_label }}" class="form-label">{{ formulario.profesionOcupacion.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.profesionOcupacion }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.servicioElegido.id_for_label }}" class="form-label">{{ formulario.servicioElegido.label }}:</label>
+        <div class="col-sm-6" style="padding-left: 0;">
+        {{ formulario.servicioElegido }}
+        </div>
+    </div>
+        <div class="col-12 help-text">
+            {{ formulario.non_field_errors }}
+            {{ formulario.non_field_errors }}
+            {% for field in formulario %}
+                {{ field.errors }}
+            {% endfor %}
+        </div>
+    <input name="" id="" class="btn btn-success ml-auto" type="submit" value="Guardar">
+
+    </form>
+</body>
+</html>

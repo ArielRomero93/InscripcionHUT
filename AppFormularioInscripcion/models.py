@@ -47,3 +47,17 @@ class FormularioInscripcionHUT(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class FormularioDeDecision(models.Model):
+    OPORTUNIDAD_SERVICIO = (
+        ('Voluntariado de Base', 'Voluntariado de Base'),
+        ('Candidato a salir al campo', 'Candidato a salir al campo'),
+        ('Intercesion', 'Intercesion'),
+        ('Futuros tutores de HUT', 'Futuros tutores de HUT'),
+        ('Movilizador', 'Movilizador')
+    )
+    nombre = models.CharField(max_length= 30)
+    apellido = models.CharField(max_length=30)
+    email = models.EmailField()
+    profesionOcupacion = models.CharField(max_length = 30)
+    servicioElegido = models.CharField(choices=OPORTUNIDAD_SERVICIO, max_length = 30)

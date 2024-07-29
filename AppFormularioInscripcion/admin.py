@@ -69,6 +69,7 @@ class AdminProvinciaEstado(admin.ModelAdmin):
     ordering = ['provinciaNombre']
 
 class AdminFormularioInscripcion(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('nombre', 'apellido', 'pais', 'id')
     resource_class = AdminResource
     ordering = ['nombre']
 
