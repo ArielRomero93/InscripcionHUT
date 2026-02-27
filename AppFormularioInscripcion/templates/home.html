@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href='{% static "css/estilosBase.css" %}' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/estilosGrillasReportes.css' %}">
+</head>
+
+
+<body>
+    <div class="sidebar">
+        <div class="logo_details">
+            <span class="logo_name">{{request.session.username}}</span>
+        </div>
+        {% if request.session.usuario_id %}
+        {% if request.session.role <= 3003 %} <ul class="nav-list">
+            <li>
+                <a href="#" id="btn" class="menu-toggle">
+                    <span class="material-icons">menu</span>
+                    <span class="link_name">Menú</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'inicio' %}">
+                    <span class="material-icons">home</span>
+                    <span class="link_name">Inicio</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'mostrar_opciones' 1 %}">
+                    <span class="material-icons">assessment</span>
+                    <span class="link_name">Reportes</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'mostrar_opciones' 2 %}">
+                    <span class="material-icons">description</span>
+                    <span class="link_name">Formularios</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">
+                    <span class="material-icons">logout</span>
+                    <span class="link_name">Cerrar sesión</span>
+                </a>
+            </li>
+
+            </ul>
+            {% endif %}
+            {% endif %}
+    </div>
+
+    <div class="main-content">
+        {% if request.session.usuario_id %}
+        {% block contenido %}
+        {% endblock %}
+        {% endif %}
+    </div>
+  <script src="{% static 'js/app.js' %}" defer></script>
+</body>
+
+</html>

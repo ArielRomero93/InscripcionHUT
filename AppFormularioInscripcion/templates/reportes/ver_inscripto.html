@@ -1,0 +1,91 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Detalles del Inscripto{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2>Detalles del Inscripto {{ inscripto.nombre }}</h2>
+    <form>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" value="{{ inscripto.nombre }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" value="{{ inscripto.apellido }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="pais">País:</label>
+            <input type="text" id="pais" value="{{ inscripto.pais.paisNombre }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="provincia">Provincia/Estado:</label>
+            <input type="text" id="provincia" value="{{ inscripto.provincia.provinciaNombre }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" value="{{ inscripto.ciudad }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" value="{{ inscripto.telefono }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="congregacion">Congregación:</label>
+            <input type="text" id="congregacion" value="{{ inscripto.congregacion }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="pastor">Pastor:</label>
+            <input type="text" id="pastor" value="{{ inscripto.pastor }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="{{ inscripto.email }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="estadoCivil">Estado Civil:</label>
+            <input type="text" id="estadoCivil" value="{{ inscripto.estadoCivil }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="fechaCreacion">Fecha de Creación:</label>
+            <input type="text" id="fechaCreacion" value="{{ inscripto.fecha_creacion|date:"d/m/Y H:i" }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="abandonado">Abandonado:</label>
+            <input type="text" id="abandonado" value="{{ inscripto.abandonado|yesno:"Sí,No" }}" readonly>
+        </div>
+
+        {% if inscripto.fecha_abandono %}
+        <div class="form-group">
+            <label for="fechaAbandono">Fecha de Abandono:</label>
+            <input type="text" id="fechaAbandono" value="{{ inscripto.fecha_abandono|date:"d/m/Y" }}" readonly>
+        </div>
+        {% endif %}
+
+        {% if inscripto.fecha_finalizacion %}
+        <div class="form-group">
+            <label for="fechaFinalizacion">Fecha de Abandono:</label>
+            <input type="text" id="fechaFinalizacion" value="{{ inscripto.fecha_finalizacion|date:"d/m/Y" }}" readonly>
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <a href="{% url 'ReporteInscriptosHUT' %}" class="btn btn-primary">Regresar</a>
+        </div>
+    </form>
+</div>
+
+<link rel="stylesheet" href="{% static 'css/estilosVerInscriptos.css' %}">
+
+{% endblock %}

@@ -1,0 +1,68 @@
+body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        h2 {
+         font-family: 'Roboto', sans-serif; /* Agrega Roboto como la fuente */
+         color: #ffffff; /* Cambia el color a blanco */
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+            background-color: #81A9A4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .col-sm-3, .col-sm-4, .col-sm-6 {
+            padding-left: 0;
+        }
+
+        .help-text {
+            color: #dc3545;
+            font-size: 12px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+
+         .logo-img {
+
+            top: 10px;
+            right: 10px;
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .logo1-img {
+
+            top: 10px;
+            right: 10px;
+            max-width: 400px;
+            max-height: 100px;
+        }
+
+        .contenedorPrincipal {
+            background-color: #81A9A4;
+            border-radius: 10px;
+        }
+
+        .parrafoExito {
+            font-size: 18px; /* Tamaño del texto */
+            line-height: 1.5; /* Espaciado entre líneas */
+            margin-bottom: 10px; /* Margen inferior */
+            color: #ffffff; /* Color del texto (verde oscuro en este caso) */
+        }
+
+        .tituloExito{
+          font-size: 48px; /* Tamaño del texto */
+        }

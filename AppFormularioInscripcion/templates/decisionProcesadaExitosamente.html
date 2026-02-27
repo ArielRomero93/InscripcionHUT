@@ -1,0 +1,23 @@
+<!-- templates/exito.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link type='text/css' href='{% static "css/estilos.css" %}' rel='stylesheet'>
+    <title>Decision Exitosa</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="alert alert-success text-center contenedorPrincipal">
+            <h2 class="mb-4 tituloExito">¡Recibimos tu Respuesta!</h2>
+            <p class="parrafoExito">{{ nombre }}, gracias por tu comromiso y tomar una decision.</p>
+            <br>
+            <p class="parrafoExito">Pronto nos estaremos contactando con vos.</p>
+        </div>
+    </div>
+</body>
+</html>

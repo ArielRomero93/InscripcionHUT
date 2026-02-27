@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px; /* Ajusta el ancho máximo del contenedor */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.form-container {
+    text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333; /* Color del título */
+}
+
+.input-group {
+    margin-bottom: 15px; /* Espacio entre los campos del formulario */
+}
+
+label {
+    display: block; /* Hace que el label ocupe toda la línea */
+    margin-bottom: 5px; /* Espacio entre el label y el input */
+    font-weight: bold; /* Resalta el label */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Hace que el input ocupe todo el ancho del contenedor */
+    padding: 10px; /* Espacio interno en el input */
+    border: 1px solid #ccc; /* Color del borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+button {
+    width: 100%; /* Hace que el botón ocupe todo el ancho del contenedor */
+    padding: 10px; /* Espacio interno en el botón */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color del botón al pasar el mouse */
+}
+
+.messages {
+    margin-top: 15px; /* Espacio superior para las mensajes */
+}
+
+.message {
+    background-color: #f8d7da; /* Color de fondo del mensaje */
+    color: #721c24; /* Color del texto del mensaje */
+    border: 1px solid #f5c6cb; /* Color del borde del mensaje */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espacio interno en el mensaje */
+    margin-bottom: 10px; /* Espacio entre mensajes */
+}
+
+.password-reset-link {
+    margin-top: 15px; /* Espacio superior */
+}
+
+.password-reset-link a {
+    display: inline-block; /* Para que se comporte como un botón */
+    color: red; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 14px; /* Tamaño de la fuente */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.password-reset-link a:hover {
+    color: #0056b3; /* Cambia el color al pasar el mouse */
+    text-decoration: none; /* Asegura que el texto no se subraye */
+}

@@ -1,0 +1,81 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}Reporte de Inscriptos Agrupado{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/inscriptosAgrupado.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2>Reporte de Inscriptos Agrupados</h2>
+
+    <form method="GET" action="{% url 'reporte_inscriptos_agrupado' %}">
+        {% csrf_token %}
+        <div class="filters">
+            <label for="fechaDesde">Fecha Desde:</label>
+            <input type="date" id="fechaDesde" name="fechaDesde" value="{{ fecha_desde }}">
+
+            <label for="fechaHasta">Fecha Hasta:</label>
+            <input type="date" id="fechaHasta" name="fechaHasta" value="{{ fecha_hasta }}">
+
+            <div>
+                <label>Agrupar por:</label>
+                <input type="radio" id="mensual" name="agrupacion" value="mensual" {% if agrupacion == 'mensual' %}checked{% endif %}> Mensual
+                <input type="radio" id="trimestral" name="agrupacion" value="trimestral" {% if agrupacion == 'trimestral' %}checked{% endif %}> Trimestral
+                <input type="radio" id="semestral" name="agrupacion" value="semestral" {% if agrupacion == 'semestral' %}checked{% endif %}> Semestral
+                <input type="radio" id="anual" name="agrupacion" value="anual" {% if agrupacion == 'anual' %}checked{% endif %}> Anual
+            </div>
+
+            <button type="submit">Filtrar</button>
+        </div>
+    </form>
+
+    {% if formularios_agrupados %}
+    <div class="agrupaciones">
+        {% for agrupacion in formularios_agrupados %}
+            <div class="agrupacion">
+            {% if agrupacion.mes %}
+                {% with agrupacion.mes|add:"-1" as mes %}
+                    {% if mes >= 0 %}
+                        <h3>{{ months[mes] }} {{ agrupacion.anio }} - Total: {{ agrupacion.cantidad }} registros</h3>
+                    {% endif %}
+                {% endwith %}
+<!--                <h3>{{ months[agrupacion.mes|add:"-1"] }} {{ agrupacion.anio }} - Total: {{ agrupacion.cantidad }} registros</h3>-->
+            {% elif agrupacion.trimestre %}
+                <h3>Trimestre {{ agrupacion.trimestre }} - Total: {{ agrupacion.cantidad }} registros</h3>
+            {% elif agrupacion.semestre %}
+                <h3>Semestre {{ agrupacion.semestre }} - Total: {{ agrupacion.cantidad }} registros</h3>
+            {% elif agrupacion.anio %}
+                <h3>Año {{ agrupacion.anio }} - Total: {{ agrupacion.cantidad }} registros</h3>
+            {% endif %}
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for formulario in agrupacion.formularios %}
+                            <tr>
+                                <td>{{ formulario.nombre }}</td>
+                                <td>{{ formulario.apellido }}</td>
+                                <td>{{ formulario.edad }}</td>
+                                <td>
+                                    <a href="{% url 'ver_inscripto' formulario.id %}" class="btn btn-ver">Ver</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

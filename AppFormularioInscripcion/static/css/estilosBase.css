@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --color-default: #004f83;
+    --color-second: #0067ac;
+    --color-white: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: var(--color-default);
+    transition: width 0.5s ease;
+    position: fixed;
+}
+
+.sidebar.open {
+    width: 180px;
+}
+
+.sidebar .logo_details {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: var(--color-white);
+}
+
+.sidebar .logo_details .logo_name {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    margin-left: 10px;
+}
+
+.sidebar.open .logo_details .logo_name {
+    opacity: 1;
+}
+
+.sidebar .logo_details #btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.sidebar .nav-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    position: relative;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-white);
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar li a:hover {
+    background-color: var(--color-second);
+}
+
+.sidebar li a .material-icons {
+    font-size: 24px;
+}
+
+.sidebar li .link_name {
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sidebar.open li .link_name {
+    opacity: 1;
+}
+
+.main-content {
+    margin-left: 60px;
+    padding: 20px;
+    width: calc(100% - 60px);
+    transition: margin-left 0.5s ease, width 0.5s ease;
+}
+
+.sidebar.open ~ .main-content {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+}
+
+@media (max-width: 768px) { /* Cambia 768px si deseas un punto de quiebre diferente */
+  .sidebar {
+      width: 60px; /* Ancho cerrado */
+      overflow: hidden; /* Oculta el contenido */
+  }
+
+  .sidebar.open {
+      width:180px; /* Ancho abierto */
+  }
+
+  .sidebar .nav-list {
+      flex-direction: column; /* Asegura que los elementos de la lista se apilen */
+  }
+
+  .sidebar li a .link_name {
+      opacity: 0; /* Oculta los nombres */
+  }
+
+  .sidebar.open li a .link_name {
+      opacity: 1; /* Muestra los nombres cuando está abierto */
+  }
+}
+

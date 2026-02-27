@@ -1,0 +1,166 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+}
+
+.header {
+    position: sticky; /* O usa fixed si quieres que esté siempre en la parte superior de la ventana */
+    top: 0; /* Posiciona el encabezado en la parte superior */
+    background-color: white; /* Asegúrate de que el fondo sea blanco o del color que desees */
+    z-index: 10; /* Asegúrate de que quede sobre otros elementos */
+    padding: 10px; /* Espaciado interno para un mejor aspecto */
+    padding-top: 0 px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+.header h2 {
+    margin: 0; /* Elimina márgenes del título */
+}
+
+.header .controls {
+    display: flex; /* Usar flexbox para alinear controles */
+    align-items: center; /* Centrar verticalmente los controles */
+}
+
+.header input[type="text"] {
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px; /* Espacio entre el input y el botón */
+}
+
+.date-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botón de buscar */
+.btn-buscar {
+    background-color: #007b3e; /* Color diferente al de exportar */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.linkExportar {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-buscar:hover {
+    background-color: #00954f;
+}
+
+/* Input de búsqueda */
+#searchInput {
+    margin-left: 10px;
+}
+
+/* Botón de exportar */
+.btn-exportar {
+    background-color: #004f83;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.btn-exportar:hover {
+    background-color: #0067ac;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #004f83;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+button:hover {
+    background-color: #0067ac;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; /* Agrega un margen para separar la tabla del encabezado */
+
+}
+
+.table th, .table td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    position: sticky; /* Fija el encabezado de la tabla */
+    top: 0; /* Asegura que se quede en la parte superior */
+    z-index: 5; /* Asegura que esté por encima de las filas */
+}
+
+/* Alternativa: aplicar color blanco a las filas pares */
+.table tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Color blanco para filas pares */
+}
+
+/* Efecto hover para mejorar la interacción */
+.table tbody tr:hover {
+    background-color: #e0e0e0; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para el contenedor que permite el desplazamiento */
+.table-responsive {
+    max-height: 400px; /* Cambia a la altura deseada */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+}
+
+/* Estilo para el ícono de "Ver" (verde) */
+.icono-ver {
+    color: green;
+    cursor: pointer;
+    margin-right: 8px; /* Espacio entre íconos */
+    text-decoration: none; /* Sin subrayado en el enlace */
+}
+
+.icono-ver:hover {
+    color: darkgreen; /* Cambio de color al hacer hover */
+}
+
+/* Estilo para el ícono de "Eliminar" (rojo) */
+.icono-baja {
+    color: red;
+    cursor: pointer;
+    text-decoration: none; /* Sin subrayado en el enlace */
+}
+
+.icono-baja:hover {
+    color: darkred; /* Cambio de color al hacer hover */
+}
+.registros-contador {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    border-top: 1px solid #ccc; /* Borde superior fino */
+    padding-top: 10px; /* Espaciado superior para separar el texto del borde */
+}

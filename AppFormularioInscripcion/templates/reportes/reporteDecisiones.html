@@ -1,0 +1,53 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Reporte de Decisiones{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/estilosGrillasReportes.css' %}">
+{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 id="reportTitle">Lista de Decisiones</h2>
+    <div class="header">
+        <input type="text" id="searchInput" placeholder="Buscar...">
+
+        <button id="exportButton" type="button">Exportar a Excel</button>
+
+    </div>
+    <div class="table-responsive">
+        <table id="tablaReporte" class="table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Nombre</th>
+                    <th onclick="sortTable(1)">Apellido</th>
+                    <th onclick="sortTable(2)">Email</th>
+                    <th onclick="sortTable(3)">Ocupación</th>
+                    <th onclick="sortTable(4)">Elección</th>
+                    <th onclick="sortTable(5)">Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for formulario in formularios %}
+                <tr>
+                    <td>{{ formulario.nombre }}</td>
+                    <td>{{ formulario.apellido }}</td>
+                    <td>{{ formulario.email }}</td>
+                    <td>{{ formulario.profesionOcupacion }}</td>
+                    <td>{{ formulario.servicioElegido }}</td>
+                    <td>{{ formulario.fecha_creacion }}</td>
+                    <td>
+                        <a href="{% url 'ver_interesado' formulario.id %}" class="icono-ver" title="Ver datos"><i class="fas fa-eye"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script src="{% static 'js/ordenarGrillasReportes.js' %}" defer></script>
+<script src="{% static 'js/buscarGrillaReportes.js' %}" defer></script>
+<script src="{% static 'js/exportarGrillaReportesXls.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+
+{% endblock %}

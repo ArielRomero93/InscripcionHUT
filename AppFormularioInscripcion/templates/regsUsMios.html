@@ -1,0 +1,11 @@
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Esto renderiza todos los campos del formulario en párrafos -->
+    <button type="submit">Registrar</button>
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endif %}

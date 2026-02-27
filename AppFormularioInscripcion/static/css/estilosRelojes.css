@@ -1,0 +1,59 @@
+body {
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5rem;
+}
+
+h2 {
+    color: #444;
+}
+
+.clock {
+    font-size: 2rem;
+    color: 	#1C1B17;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Colores según las banderas */
+.argentina {
+    background: linear-gradient(90deg, #74acdf, #ffffff, #74acdf); /* Celeste y blanco */
+}
+
+.chile {
+    background: linear-gradient(90deg, #ff0000, #ffffff, #0033cc); /* Rojo, blanco y azul */
+}
+
+.brasil {
+    background: linear-gradient(90deg, #009c3b, #ffdf00, #009c3b); /* Verde y amarillo */
+}
+
+.colombia {
+    background: linear-gradient(90deg, #ffdd00, #003893, #ce1126); /* Amarillo, azul y rojo */
+}
+
+.elsalvador {
+    background: linear-gradient(90deg, #0047ab, #ffffff, #0047ab); /* Azul y blanco */
+}
+
+.mexico {
+    background: linear-gradient(90deg, #006847, #ffffff, #ce1126); /* Verde, blanco y rojo */
+}
+
+.usa {
+    background: linear-gradient(90deg, #3c3b6e, #ffffff, #b22234); /* Azul, blanco y rojo */
+}
+
+.canada {
+    background: linear-gradient(90deg, #ff0000, #ffffff, #ff0000); /* Rojo y blanco */
+}
+
+.container {
+    padding: 50px 0;
+}

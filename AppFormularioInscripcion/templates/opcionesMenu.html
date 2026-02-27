@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Opciones del Menú{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h2 class="menu-title">
+        {% if tipo_opcion == 1 %}
+            Opciones de Reportes
+        {% elif tipo_opcion == 2 %}
+            Opciones de Formularios
+        {% elif tipo_opcion == 3 %}
+            Opciones de Gráficos
+        {% else %}
+            Opciones del Menú
+        {% endif %}
+    </h2>
+
+    <div class="menu-grid">
+        {% for opcion in opciones %}
+        <div class="menu-option">
+           <a href="{% url opcion.ruta %}" class="menu-link">
+                <i class="{{ opcion.Icono }} icon"></i>
+                <h5 class="description">{{ opcion.Descripcion }}</h5>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/estilosMenuOpciones.css' %}">
+
+{% endblock %}
