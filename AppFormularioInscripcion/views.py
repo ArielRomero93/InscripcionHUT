@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
@@ -311,4 +311,3 @@ def obtener_provincias(request):
 def UsuarioDecision(request):
     usuariosDecisiones = FormularioDeDecision.objects.order_by('nombre')
     return render(request, 'formularioDecisionGrilla.html', {'usuarios': usuariosDecisiones})
->>>>>>> 67d304ea4b40605ad550d744c4b268d28871bcf7

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # from django.contrib import admin
 # from import_export import resources
 # from import_export.admin import ImportExportModelAdmin
@@ -162,4 +162,4 @@ admin.site.site_title = 'HUT'
 admin.site.register(Pais, AdminPais)
 admin.site.register(ProvinciaEstado, AdminProvinciaEstado)
 admin.site.register(FormularioInscripcionHUT, AdminFormularioInscripcion)
->>>>>>> 67d304ea4b40605ad550d744c4b268d28871bcf7
+

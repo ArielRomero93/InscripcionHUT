@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from django import forms
 from django.contrib.auth.hashers import make_password
 from .models import FormularioInscripcionHUT, FormularioDeDecision, Usuario, Voluntario
@@ -186,8 +186,8 @@ class InscripcionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initial['telefono'] = '+xx xxxx xxxxxx'
-        
-        
+
+
 class DecisionForm(forms.ModelForm):
     class Meta:
         model = FormularioDeDecision
@@ -206,4 +206,3 @@ class DecisionForm(forms.ModelForm):
             'profesionOcupacion': 'Profesion / Ocupacion',
             'servicioElegido': 'Oportunidades de Servicio'
         }
->>>>>>> 67d304ea4b40605ad550d744c4b268d28871bcf7
